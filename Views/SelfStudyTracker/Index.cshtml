@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PROG6212POE.Models.SelfStudyTracker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ModuleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudyHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModuleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudyHours)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TrackerId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TrackerId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TrackerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,46 @@
+﻿@model PROG6212POE.Models.Semester
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Semester</h1>
+
+<h5 style="color:red">@ViewBag.SemesterError</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SemesterWeeks" class="control-label"></label>
+                <input asp-for="SemesterWeeks" class="form-control" autocomplete="off" />
+                <span asp-validation-for="SemesterWeeks" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SemesterDate" class="control-label"></label>
+                <input asp-for="SemesterDate" class="form-control" />
+                <span asp-validation-for="SemesterDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            @if (ViewBag.SemMessage != null)@* code to display the alert *@
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.SemMessage")
+                    };
+                </script>
+            }
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,33 @@
+﻿@model List<int>
+
+<div>
+    <canvas id="barChart" width="400" height="200"></canvas>
+</div>
+
+<script>
+    // Ensure that the data is properly formatted for JavaScript
+    var chartData = @Html.Raw(Json.Serialize(Model));
+
+    // Use Chart.js to create a bar chart
+    var ctx = document.getElementById('barChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.map((_, index) => `Label ${index + 1}`),
+            datasets: [{
+                label: 'Bar Chart',
+                data: chartData,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

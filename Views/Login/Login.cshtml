@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<h4>Please enter your credentials</h4>
+<h5 style="color:red">@ViewBag.LoginError</h5>
+<h5 style="color:red">@TempData["LoginFirst"]</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            
+            <div class="form-group">
+                <label  class="control-label">Username</label>
+                <input name="username" class="form-control" autocomplete="off" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type = "password" name = "password" class="form-control" />
+            </div>
+          
+           
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" asp-asp-page-handler="Submit"/>
+                 </div>
+            @*__________________code attribution______________________
+            The following method was taken from ASPSNIPPETS
+            Author: Mudassar Khan
+            Link: https://www.aspsnippets.com/Articles/1642/ASPNet-MVC-Display-Message-from-Controller-in-View-using-JavaScript-Alert-MessageBox/
+            @if (ViewBag.Message != null)@* code to display the alert *@
+            {
+            <script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewBag.Message")
+                };
+            </script>
+            }
+            @*__________________end______________________*@
+           
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+   
+}

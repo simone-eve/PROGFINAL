@@ -1,0 +1,69 @@
+﻿@model PROG6212POE.Models.Module
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Module</h1>
+
+<h5 style="color:red">@ViewBag.ModuleError</h5>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="moduleForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ModuleCode" class="control-label"></label>
+                <input asp-for="ModuleCode" class="form-control" autocomplete="off" />
+                <span asp-validation-for="ModuleCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModuleName" class="control-label"></label>
+                <input asp-for="ModuleName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="ModuleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfCredits" class="control-label"></label>
+                <input asp-for="NumberOfCredits" class="form-control" autocomplete="off" />
+                <span asp-validation-for="NumberOfCredits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeeklyHours" class="control-label"></label>
+                <input asp-for="WeeklyHours" class="form-control" autocomplete="off" />
+                <span asp-validation-for="WeeklyHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekDayName" class="control-label"></label>
+                @*__________________code attribution______________________
+                The following method was taken from ASPSNIPPETS
+                Author: Mudassar Khan
+                Link: https://www.aspsnippets.com/Articles/1642/ASPNet-MVC-Display-Message-from-Controller-in-View-using-JavaScript-Alert-MessageBox/
+                @if (ViewBag.Message != null)@* code to display the alert *@
+                <select asp-for="WeekDayName" class="form-control" asp-items="ViewBag.WeekDays">
+                    <option value="">Select a Week Day</option>
+                </select>
+                @*__________________end______________________*@
+                <span asp-validation-for="WeekDayName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            @if (ViewBag.Message != null)@* code to display the alert *@
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.Message")
+                    };
+                </script>
+            }
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

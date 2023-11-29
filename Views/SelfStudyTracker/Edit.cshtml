@@ -1,0 +1,44 @@
+﻿@model PROG6212POE.Models.SelfStudyTracker
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>SelfStudyTracker</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TrackerId" />
+            <div class="form-group">
+                <label asp-for="ModuleName" class="control-label"></label>
+                <input asp-for="ModuleName" class="form-control" />
+                <span asp-validation-for="ModuleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudyHours" class="control-label"></label>
+                <input asp-for="StudyHours" class="form-control" />
+                <span asp-validation-for="StudyHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentDate" class="control-label"></label>
+                <input asp-for="CurrentDate" class="form-control" />
+                <span asp-validation-for="CurrentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
